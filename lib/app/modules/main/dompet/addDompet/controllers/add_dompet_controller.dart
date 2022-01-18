@@ -4,6 +4,8 @@ import 'package:mobile_pocket_app/app/data/providers/dompetProvider.dart';
 
 class AddDompetController extends GetxController {
   //TODO: Implement AddDompetController
+
+  ///inisialisasi variabel controller textediting
   late TextEditingController nameC;
   late TextEditingController referensiC;
   late TextEditingController deskripsiC;
@@ -11,6 +13,7 @@ class AddDompetController extends GetxController {
   var dropStatus = 'Aktif'.obs;
   final items = ['Aktif', 'Tidak Aktif'];
 
+  /// fungsi yang digunakan untuk memanggil provider [addDompet]
   Future<void> addDompet(
       String name, String referensi, String deskripsi, String status) async {
     if (name != '' || referensi != '' || deskripsi != '') {

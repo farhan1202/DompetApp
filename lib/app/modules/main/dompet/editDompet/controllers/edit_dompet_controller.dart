@@ -7,6 +7,8 @@ import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
 class EditDompetController extends GetxController {
   //TODO: Implement EditDompetController
+
+  /// inisialisasi variabel controller edit text
   late TextEditingController nameC;
   late TextEditingController referensiC;
   late TextEditingController deskripsiC;
@@ -14,8 +16,10 @@ class EditDompetController extends GetxController {
   var dropStatus = 'Aktif'.obs;
   final items = ['Aktif', 'Tidak Aktif'];
 
+  /// variabel yang digunakan untuk menampung data dari halaman sebelumnya
   Datum data = Get.arguments;
 
+  /// fungsi yang digunakan untuk memanggil provider [editDompet]
   Future<void> editDompet(
       String name, String referensi, String deskripsi, String status) async {
     if (name != '' || referensi != '' || deskripsi != '') {

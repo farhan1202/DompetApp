@@ -7,11 +7,16 @@ import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
 class DompetController extends GetxController {
   //TODO: Implement DompetController
-
+  /// variabel untuk menampung data [dompet]
   RxList<Datum> dompet = List<Datum>.empty().obs;
+
+  /// variabel untuk menampung data [dompet aktif]
   RxList<Datum> dompetAktif = List<Datum>.empty().obs;
+
+  /// variabel untuk menampung data [dompet tidak aktif]
   RxList<Datum> dompetNAktif = List<Datum>.empty().obs;
 
+  ///fungsi yang digunakan untuk memanggil Provider [getAllDompet]
   Future<void> getAllDompet() async {
     try {
       var response = await DompetsController().getAllDompet();
@@ -37,6 +42,7 @@ class DompetController extends GetxController {
     }
   }
 
+  ///fungsi yang digunakan untuk memanggil Provider [editStat]
   Future<void> editStatDompet(String id, String status) async {
     String stat;
     if (status == '1') {
