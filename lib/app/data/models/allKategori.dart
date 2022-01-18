@@ -1,4 +1,4 @@
-// To parse this JSON data, do
+/// Model yang di dapat dari JSON respon [getAllKategori]
 //
 //     final kategori = kategoriFromJson(jsonString);
 

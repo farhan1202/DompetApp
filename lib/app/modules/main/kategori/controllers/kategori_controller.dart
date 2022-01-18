@@ -15,9 +15,11 @@ class KategoriController extends GetxController {
   /// variabel untuk menampung data [kategori tidak aktif]
   RxList<Datum> kategoriNAktif = List<Datum>.empty().obs;
 
+  ///fungsi yang digunakan untuk memanggil [KategoriProvide] untuk menggunakan
+  ///fungsi [getAllKategori]
   Future<void> getAllKategori() async {
     try {
-      var response = await KategoriProvider().getAllDompet();
+      var response = await KategoriProvider().getAllKategori();
 
       if (response!.data != null) {
         kategori.clear();
@@ -40,6 +42,8 @@ class KategoriController extends GetxController {
     }
   }
 
+  ///fungsi yang digunakan untuk memanggil [KategoriProvider]
+  /// dan melakukan request untuk merupah status data
   Future<void> editStatKategori(String id, String status) async {
     String stat;
     if (status == '1') {

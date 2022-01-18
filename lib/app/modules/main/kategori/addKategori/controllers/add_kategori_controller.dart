@@ -12,7 +12,7 @@ class AddKategoriController extends GetxController {
   var dropStatus = 'Aktif'.obs;
   final items = ['Aktif', 'Tidak Aktif'];
 
-  /// fungsi yang digunakan untuk memanggil provider [addDompet]
+  /// fungsi yang digunakan untuk memanggil provider [addKategori]
   Future<void> addKategori(String name, String deskripsi, String status) async {
     if (name != '' || deskripsi != '') {
       String stat;

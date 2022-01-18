@@ -17,7 +17,7 @@ class EditKategoriController extends GetxController {
   /// variabel yang digunakan untuk menampung data dari halaman sebelumnya
   Datum data = Get.arguments;
 
-  /// fungsi yang digunakan untuk memanggil provider [editDompet]
+  /// fungsi yang digunakan untuk memanggil provider [editKategori]
   Future<void> editKategori(
       String name, String deskripsi, String status) async {
     if (name != '' || deskripsi != '') {
