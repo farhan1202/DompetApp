@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile_pocket_app/app/data/models/allDompet.dart';
+import 'package:mobile_pocket_app/app/data/models/allKategori.dart';
 import 'package:mobile_pocket_app/app/data/utils/constanta.dart';
-import 'package:mobile_pocket_app/app/modules/main/dompet/controllers/dompet_controller.dart';
-import 'package:mobile_pocket_app/app/routes/app_pages.dart';
+import 'package:mobile_pocket_app/app/modules/main/kategori/controllers/kategori_controller.dart';
 
-class CardItemDompet extends GetView<DompetController> {
-  const CardItemDompet({
+class CardItemKategori extends GetView<KategoriController> {
+  const CardItemKategori({
     Key? key,
     required this.i,
     required this.height,
@@ -50,7 +49,6 @@ class CardItemDompet extends GetView<DompetController> {
                 Text(data[i].nama.toString(),
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                Text(data[i].referensi.toString()),
                 Text(
                   data[i].deskripsi.toString(),
                   overflow: TextOverflow.ellipsis,
@@ -77,7 +75,7 @@ class CardItemDompet extends GetView<DompetController> {
   }
 }
 
-class SubMenuDialog extends GetView<DompetController> {
+class SubMenuDialog extends GetView<KategoriController> {
   const SubMenuDialog({
     Key? key,
     required this.height,
@@ -107,10 +105,10 @@ class SubMenuDialog extends GetView<DompetController> {
             icon: Icons.search,
             title: "Detail",
             onTap: () {
-              Get.toNamed(
-                Routes.DETAIL_DOMPET,
-                arguments: data[i],
-              );
+              // Get.toNamed(
+              //   Routes.DETAIL_DOMPET,
+              //   arguments: data[i],
+              // );
             },
           ),
           Divider(),
@@ -118,10 +116,10 @@ class SubMenuDialog extends GetView<DompetController> {
             icon: Icons.edit,
             title: "Edit",
             onTap: () {
-              Get.toNamed(
-                Routes.EDIT_DOMPET,
-                arguments: data[i],
-              );
+              // Get.toNamed(
+              //   Routes.EDIT_DOMPET,
+              //   arguments: data[i],
+              // );
             },
           ),
           Divider(),
@@ -129,10 +127,10 @@ class SubMenuDialog extends GetView<DompetController> {
             icon: Icons.close,
             title: data[i].statusId == "1" ? "Tidak Aktif" : "Aktif",
             onTap: () {
-              controller.editStatDompet(
-                data[i].id.toString(),
-                data[i].statusId.toString(),
-              );
+              // controller.editStatDompet(
+              //   data[i].id.toString(),
+              //   data[i].statusId.toString(),
+              // );
             },
           ),
           Divider(),
