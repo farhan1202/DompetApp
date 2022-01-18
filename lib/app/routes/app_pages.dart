@@ -5,6 +5,8 @@ import '../modules/home/views/home_view.dart';
 import '../modules/main/dompet/addDompet/bindings/add_dompet_binding.dart';
 import '../modules/main/dompet/addDompet/views/add_dompet_view.dart';
 import '../modules/main/dompet/bindings/dompet_binding.dart';
+import '../modules/main/dompet/detailDompet/bindings/detail_dompet_binding.dart';
+import '../modules/main/dompet/detailDompet/views/detail_dompet_view.dart';
 import '../modules/main/dompet/views/dompet_view.dart';
 import '../modules/main/kategori/bindings/kategori_binding.dart';
 import '../modules/main/kategori/views/kategori_view.dart';
@@ -38,6 +40,11 @@ class AppPages {
           name: _Paths.ADD_DOMPET,
           page: () => AddDompetView(),
           binding: AddDompetBinding(),
+        ),
+        GetPage(
+          name: _Paths.DETAIL_DOMPET,
+          page: () => DetailDompetView(),
+          binding: DetailDompetBinding(),
         ),
       ],
     ),

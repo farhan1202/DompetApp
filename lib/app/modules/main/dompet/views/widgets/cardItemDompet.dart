@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mobile_pocket_app/app/data/models/allDompet.dart';
 import 'package:mobile_pocket_app/app/data/utils/constanta.dart';
 import 'package:mobile_pocket_app/app/modules/main/dompet/controllers/dompet_controller.dart';
+import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
 class CardItemDompet extends GetView<DompetController> {
   const CardItemDompet({
@@ -54,13 +55,107 @@ class CardItemDompet extends GetView<DompetController> {
           ),
           Spacer(),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.bottomSheet(
+                SubMenuDialog(height: height, data: data, i: i),
+              );
+            },
             icon: Icon(
               Icons.arrow_drop_down_circle_rounded,
               color: kPrimaryColor,
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class SubMenuDialog extends StatelessWidget {
+  const SubMenuDialog({
+    Key? key,
+    required this.height,
+    required this.data,
+    required this.i,
+  }) : super(key: key);
+
+  final double height;
+  final List<Datum> data;
+  final int i;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      height: height * 0.25,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15),
+            topRight: Radius.circular(15),
+          )),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SubMenu(
+            icon: Icons.search,
+            title: "Detail",
+            onTap: () {
+              Get.toNamed(
+                Routes.DETAIL_DOMPET,
+                arguments: data[i],
+              );
+            },
+          ),
+          Divider(),
+          SubMenu(
+            icon: Icons.edit,
+            title: "Edit",
+            onTap: () {},
+          ),
+          Divider(),
+          SubMenu(
+            icon: Icons.close,
+            title: data[i].statusId == "1" ? "Tidak Aktif" : "Aktif",
+            onTap: () {},
+          ),
+          Divider(),
+        ],
+      ),
+    );
+  }
+}
+
+class SubMenu extends StatelessWidget {
+  const SubMenu({
+    Key? key,
+    required this.onTap,
+    required this.icon,
+    required this.title,
+  }) : super(key: key);
+
+  final VoidCallback onTap;
+  final IconData icon;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 30,
+            ),
+            Text(title,
+                style: TextStyle(
+                  fontSize: 25,
+                )),
+          ],
+        ),
       ),
     );
   }
