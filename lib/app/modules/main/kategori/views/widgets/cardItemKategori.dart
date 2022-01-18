@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mobile_pocket_app/app/data/models/allKategori.dart';
 import 'package:mobile_pocket_app/app/data/utils/constanta.dart';
 import 'package:mobile_pocket_app/app/modules/main/kategori/controllers/kategori_controller.dart';
+import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
 class CardItemKategori extends GetView<KategoriController> {
   const CardItemKategori({
@@ -105,10 +106,10 @@ class SubMenuDialog extends GetView<KategoriController> {
             icon: Icons.search,
             title: "Detail",
             onTap: () {
-              // Get.toNamed(
-              //   Routes.DETAIL_DOMPET,
-              //   arguments: data[i],
-              // );
+              Get.toNamed(
+                Routes.DETAIL_KATEGORI,
+                arguments: data[i],
+              );
             },
           ),
           Divider(),
