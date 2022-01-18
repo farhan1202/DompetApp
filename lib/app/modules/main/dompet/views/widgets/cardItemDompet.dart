@@ -111,7 +111,12 @@ class SubMenuDialog extends StatelessWidget {
           SubMenu(
             icon: Icons.edit,
             title: "Edit",
-            onTap: () {},
+            onTap: () {
+              Get.toNamed(
+                Routes.EDIT_DOMPET,
+                arguments: data[i],
+              );
+            },
           ),
           Divider(),
           SubMenu(
