@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:mobile_pocket_app/app/data/models/allKategori.dart';
 import 'package:mobile_pocket_app/app/data/providers/kategoriProvider.dart';
+import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
 class KategoriController extends GetxController {
   //TODO: Implement KategoriController
@@ -39,16 +40,39 @@ class KategoriController extends GetxController {
     }
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  Future<void> editStatKategori(String id, String status) async {
+    String stat;
+    if (status == '1') {
+      stat = "2";
+    } else {
+      stat = "1";
+    }
 
-  @override
-  void onReady() {
-    super.onReady();
+    try {
+      KategoriProvider().editStat(id, stat).then((value) {
+        var data = value.body;
+        if (data['status'] == "200") {
+          Get.defaultDialog(
+            title: "Sukses",
+            middleText: data['message'],
+            textConfirm: "OK",
+            onConfirm: () {
+              Get.offAllNamed(Routes.KATEGORI);
+            },
+          );
+        } else {
+          Get.defaultDialog(
+            title: "Failed",
+            middleText: data['message'],
+            textConfirm: "OK",
+            onConfirm: () {
+              Get.back();
+            },
+          );
+        }
+      });
+    } catch (e) {
+      print(e.toString());
+    }
   }
-
-  @override
-  void onClose() {}
 }

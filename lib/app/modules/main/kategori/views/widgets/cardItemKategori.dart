@@ -127,10 +127,10 @@ class SubMenuDialog extends GetView<KategoriController> {
             icon: Icons.close,
             title: data[i].statusId == "1" ? "Tidak Aktif" : "Aktif",
             onTap: () {
-              // controller.editStatDompet(
-              //   data[i].id.toString(),
-              //   data[i].statusId.toString(),
-              // );
+              controller.editStatKategori(
+                data[i].id.toString(),
+                data[i].statusId.toString(),
+              );
             },
           ),
           Divider(),
