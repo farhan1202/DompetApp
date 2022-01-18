@@ -74,7 +74,7 @@ class CustomeButton extends GetView<EditDompetController> {
           ),
           child: Center(
             child: Text(
-              "Add Dompet",
+              "Edit Data",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

@@ -117,10 +117,10 @@ class SubMenuDialog extends GetView<KategoriController> {
             icon: Icons.edit,
             title: "Edit",
             onTap: () {
-              // Get.toNamed(
-              //   Routes.EDIT_DOMPET,
-              //   arguments: data[i],
-              // );
+              Get.toNamed(
+                Routes.EDIT_KATEGORI,
+                arguments: data[i],
+              );
             },
           ),
           Divider(),
