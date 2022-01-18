@@ -10,7 +10,13 @@ import '../modules/main/dompet/detailDompet/views/detail_dompet_view.dart';
 import '../modules/main/dompet/editDompet/bindings/edit_dompet_binding.dart';
 import '../modules/main/dompet/editDompet/views/edit_dompet_view.dart';
 import '../modules/main/dompet/views/dompet_view.dart';
+import '../modules/main/kategori/addKategori/bindings/add_kategori_binding.dart';
+import '../modules/main/kategori/addKategori/views/add_kategori_view.dart';
 import '../modules/main/kategori/bindings/kategori_binding.dart';
+import '../modules/main/kategori/detailKategori/bindings/detail_kategori_binding.dart';
+import '../modules/main/kategori/detailKategori/views/detail_kategori_view.dart';
+import '../modules/main/kategori/editKategori/bindings/edit_kategori_binding.dart';
+import '../modules/main/kategori/editKategori/views/edit_kategori_view.dart';
 import '../modules/main/kategori/views/kategori_view.dart';
 import '../modules/main/main/bindings/main_binding.dart';
 import '../modules/main/main/views/main_view.dart';
@@ -59,6 +65,23 @@ class AppPages {
       name: _Paths.KATEGORI,
       page: () => KategoriView(),
       binding: KategoriBinding(),
+      children: [
+        GetPage(
+          name: _Paths.ADD_KATEGORI,
+          page: () => AddKategoriView(),
+          binding: AddKategoriBinding(),
+        ),
+        GetPage(
+          name: _Paths.EDIT_KATEGORI,
+          page: () => EditKategoriView(),
+          binding: EditKategoriBinding(),
+        ),
+        GetPage(
+          name: _Paths.DETAIL_KATEGORI,
+          page: () => DetailKategoriView(),
+          binding: DetailKategoriBinding(),
+        ),
+      ],
     ),
   ];
 }

@@ -9,7 +9,10 @@ abstract class Routes {
   static const KATEGORI = _Paths.KATEGORI;
   static const ADD_DOMPET = _Paths.DOMPET + _Paths.ADD_DOMPET;
   static const DETAIL_DOMPET = _Paths.DOMPET + _Paths.DETAIL_DOMPET;
-  static const EDIT_DOMPET =  _Paths.DOMPET + _Paths.EDIT_DOMPET;
+  static const EDIT_DOMPET = _Paths.DOMPET + _Paths.EDIT_DOMPET;
+  static const ADD_KATEGORI = _Paths.KATEGORI + _Paths.ADD_KATEGORI;
+  static const EDIT_KATEGORI = _Paths.KATEGORI + _Paths.EDIT_KATEGORI;
+  static const DETAIL_KATEGORI = _Paths.KATEGORI + _Paths.DETAIL_KATEGORI;
 }
 
 abstract class _Paths {
@@ -21,4 +24,7 @@ abstract class _Paths {
   static const ADD_DOMPET = '/add-dompet';
   static const DETAIL_DOMPET = '/detail-dompet';
   static const EDIT_DOMPET = '/edit-dompet';
+  static const ADD_KATEGORI = '/add-kategori';
+  static const EDIT_KATEGORI = '/edit-kategori';
+  static const DETAIL_KATEGORI = '/detail-kategori';
 }

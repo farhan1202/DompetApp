@@ -25,4 +25,17 @@ class KategoriProvider extends GetConnect {
 
     return post(dUrl + 'ubahStatusKategori.php', form);
   }
+
+  Future<Response> addKategori(
+      String nama, String deskripsi, String status_id) {
+    final form = FormData(
+      {
+        'nama': nama,
+        'deskripsi': deskripsi,
+        'status_id': status_id,
+      },
+    );
+
+    return post(dUrl + 'kategori.php', form);
+  }
 }

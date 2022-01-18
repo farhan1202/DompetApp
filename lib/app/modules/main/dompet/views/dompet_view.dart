@@ -31,7 +31,7 @@ class DompetView extends GetView<DompetController> {
           },
           backgroundColor: kPrimaryColor,
           child: Icon(
-            CupertinoIcons.add_circled,
+            CupertinoIcons.add,
             color: Colors.white,
           ),
         ),
