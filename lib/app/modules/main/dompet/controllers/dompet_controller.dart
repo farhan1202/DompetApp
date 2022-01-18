@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:get/get.dart';
 import 'package:mobile_pocket_app/app/data/models/allDompet.dart';
 import 'package:mobile_pocket_app/app/data/providers/dompetProvider.dart';
+import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
 class DompetController extends GetxController {
   //TODO: Implement DompetController
@@ -33,6 +34,42 @@ class DompetController extends GetxController {
       }
     } catch (e) {
       Get.snackbar("Error", e.toString());
+    }
+  }
+
+  Future<void> editStatDompet(String id, String status) async {
+    String stat;
+    if (status == '1') {
+      stat = "2";
+    } else {
+      stat = "1";
+    }
+
+    try {
+      DompetsController().editStat(id, stat).then((value) {
+        var data = value.body;
+        if (data['status'] == "200") {
+          Get.defaultDialog(
+            title: "Sukses",
+            middleText: data['message'],
+            textConfirm: "OK",
+            onConfirm: () {
+              Get.offAllNamed(Routes.DOMPET);
+            },
+          );
+        } else {
+          Get.defaultDialog(
+            title: "Failed",
+            middleText: data['message'],
+            textConfirm: "OK",
+            onConfirm: () {
+              Get.back();
+            },
+          );
+        }
+      });
+    } catch (e) {
+      print(e.toString());
     }
   }
 }

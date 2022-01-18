@@ -71,7 +71,7 @@ class CardItemDompet extends GetView<DompetController> {
   }
 }
 
-class SubMenuDialog extends StatelessWidget {
+class SubMenuDialog extends GetView<DompetController> {
   const SubMenuDialog({
     Key? key,
     required this.height,
@@ -122,7 +122,12 @@ class SubMenuDialog extends StatelessWidget {
           SubMenu(
             icon: Icons.close,
             title: data[i].statusId == "1" ? "Tidak Aktif" : "Aktif",
-            onTap: () {},
+            onTap: () {
+              controller.editStatDompet(
+                data[i].id.toString(),
+                data[i].statusId.toString(),
+              );
+            },
           ),
           Divider(),
         ],

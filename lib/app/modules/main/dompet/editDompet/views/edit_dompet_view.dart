@@ -49,7 +49,14 @@ class CustomeButton extends GetView<EditDompetController> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        controller.editDompet(
+          controller.nameC.text,
+          controller.referensiC.text,
+          controller.deskripsiC.text,
+          controller.dropStatus.toString(),
+        );
+      },
       child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),

@@ -16,7 +16,7 @@ class DompetsController extends GetConnect {
   }
 
   Future<Response> addDompet(
-      String nama, String referensi, String deskripsi, status_id) {
+      String nama, String referensi, String deskripsi, String status_id) {
     final form = FormData(
       {
         'nama': nama,
@@ -27,5 +27,31 @@ class DompetsController extends GetConnect {
     );
 
     return post(dUrl + 'dompet.php', form);
+  }
+
+  Future<Response> editDomept(String id, String nama, String referensi,
+      String deskripsi, String status_id) {
+    final form = FormData(
+      {
+        'id': id,
+        'nama': nama,
+        'referensi': referensi,
+        'deskripsi': deskripsi,
+        'status_id': status_id,
+      },
+    );
+
+    return post(dUrl + 'editDompet.php', form);
+  }
+
+  Future<Response> editStat(String id, String status_id) {
+    final form = FormData(
+      {
+        'id': id,
+        'status_id': status_id,
+      },
+    );
+
+    return post(dUrl + 'ubahStatusDompet.php', form);
   }
 }
