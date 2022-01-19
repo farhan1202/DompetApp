@@ -10,6 +10,8 @@ import '../modules/main/dompet/detailDompet/views/detail_dompet_view.dart';
 import '../modules/main/dompet/editDompet/bindings/edit_dompet_binding.dart';
 import '../modules/main/dompet/editDompet/views/edit_dompet_view.dart';
 import '../modules/main/dompet/views/dompet_view.dart';
+import '../modules/main/dompetMasuk/bindings/dompet_masuk_binding.dart';
+import '../modules/main/dompetMasuk/views/dompet_masuk_view.dart';
 import '../modules/main/kategori/addKategori/bindings/add_kategori_binding.dart';
 import '../modules/main/kategori/addKategori/views/add_kategori_view.dart';
 import '../modules/main/kategori/bindings/kategori_binding.dart';
@@ -82,6 +84,11 @@ class AppPages {
           binding: DetailKategoriBinding(),
         ),
       ],
+    ),
+    GetPage(
+      name: _Paths.DOMPET_MASUK,
+      page: () => DompetMasukView(),
+      binding: DompetMasukBinding(),
     ),
   ];
 }

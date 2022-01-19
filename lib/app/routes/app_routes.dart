@@ -13,6 +13,7 @@ abstract class Routes {
   static const ADD_KATEGORI = _Paths.KATEGORI + _Paths.ADD_KATEGORI;
   static const EDIT_KATEGORI = _Paths.KATEGORI + _Paths.EDIT_KATEGORI;
   static const DETAIL_KATEGORI = _Paths.KATEGORI + _Paths.DETAIL_KATEGORI;
+  static const DOMPET_MASUK = _Paths.DOMPET_MASUK;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const ADD_KATEGORI = '/add-kategori';
   static const EDIT_KATEGORI = '/edit-kategori';
   static const DETAIL_KATEGORI = '/detail-kategori';
+  static const DOMPET_MASUK = '/dompet-masuk';
 }
