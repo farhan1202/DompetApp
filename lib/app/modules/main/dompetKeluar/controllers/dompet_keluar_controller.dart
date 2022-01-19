@@ -15,7 +15,7 @@ class DompetKeluarController extends GetxController {
   /// variabel untuk menampung data [dompetM tidak aktif]
   RxList<Datum> dompetMNAktif = List<Datum>.empty().obs;
 
-  ///fungsi yang digunakan untuk memanggil Provider [getAllDompet]
+  ///fungsi yang digunakan untuk memanggil Provider [getAllDompetKeluar]
   Future<void> getAllDompetMasuk() async {
     try {
       var response = await TransaksiProvider().getAllKategori("2");
@@ -41,6 +41,7 @@ class DompetKeluarController extends GetxController {
     }
   }
 
+  ///fungsi yang digunakan untuk memanggil transaksiprovider `editStat`
   Future<void> editStatDompet(String id, String status) async {
     String stat;
     if (status == '1') {

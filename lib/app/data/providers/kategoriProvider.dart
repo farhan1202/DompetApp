@@ -63,6 +63,7 @@ class KategoriProvider extends GetConnect {
     return post(dUrl + 'editKategori.php', form);
   }
 
+  ///fungsi yang digunakan untuk menjadapatkan data [Status] yang ada pada tabel kategori_status
   Future<Status?> getAllStatus() async {
     final respone = await get(dUrl + "getStatDompet.php");
 

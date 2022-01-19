@@ -66,6 +66,7 @@ class DompetsController extends GetConnect {
     return post(dUrl + 'ubahStatusDompet.php', form);
   }
 
+  ///Fungsi yang digunakan untuk mendapatkan Data [Status] dompet yang ada pada table Dompet Status
   Future<Status?> getAllStatus() async {
     final respone = await get(dUrl + "getStatDompet.php");
 

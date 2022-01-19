@@ -16,6 +16,7 @@ class EditDompetKeluarController extends GetxController {
 
   Datum data = Get.arguments;
 
+  ///inisialisasi controller untuk textfield
   late TextEditingController nilaiC;
   late TextEditingController deskripsiC;
   late TextEditingController dateC;
@@ -23,8 +24,13 @@ class EditDompetKeluarController extends GetxController {
       "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}"
           .obs;
 
+  ///variable yang digunakan untuk menampung list [status] aktif
   RxList<dStatus.Datum> status = List<dStatus.Datum>.empty().obs;
+
+  ///variable yang digunakan untuk menampung list [dompet] aktif
   RxList<dDompet.Datum> dompet = List<dDompet.Datum>.empty().obs;
+
+  ///variable yang digunakan untuk menampung list [kategori] aktif
   RxList<dKategori.Datum> kategori = List<dKategori.Datum>.empty().obs;
 
   var dropStatus = ''.obs;
@@ -32,6 +38,7 @@ class EditDompetKeluarController extends GetxController {
   var dropKategori = ''.obs;
   // final items = ['Aktif', 'Tidak Aktif'];
 
+  ///fungsi yang digunakan untuk memanggil transaksiprovider [editTransaksi]
   Future<void> editDompetMasuk(String deskripsi, String nilai, String statusId,
       String dompetId, String kategoriId) async {
     if (nilai != '' || statusId != '' || dompetId != '' || kategoriId != '') {
@@ -90,6 +97,7 @@ class EditDompetKeluarController extends GetxController {
     }
   }
 
+  ///fungsi yang digunakan untuk mendapatkan list `status`
   Future<RxList<dStatus.Datum>> getDataStatus() async {
     var response = await TransaksiProvider().getAllStatus();
     if (response!.data != null) {
@@ -104,6 +112,7 @@ class EditDompetKeluarController extends GetxController {
     return status;
   }
 
+  ///fungsi yang digunakan untuk mendapatkan list `dompet`
   Future<RxList<dDompet.Datum>> getDataDompet() async {
     var response = await DompetsController().getAllDompet();
     if (response!.data != null) {
@@ -118,6 +127,7 @@ class EditDompetKeluarController extends GetxController {
     return dompet;
   }
 
+  ///fungsi yang digunakan untuk mendapatkan list `dompet`
   Future<RxList<dKategori.Datum>> getDataKategori() async {
     var response = await KategoriProvider().getAllKategori();
     if (response!.data != null) {

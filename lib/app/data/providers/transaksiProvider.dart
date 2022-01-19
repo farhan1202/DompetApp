@@ -4,6 +4,9 @@ import 'package:mobile_pocket_app/app/data/models/allTransaksi.dart';
 import 'package:mobile_pocket_app/app/data/utils/constanta.dart';
 
 class TransaksiProvider extends GetConnect {
+  ///Fungsi yang digunakan untuk melakukan request ke database untuk
+  ///Mendapatkan data dari tabel Transaksi
+  ///kembaian berupa [Transaksi]
   Future<Transaksi?> getAllKategori(String transaksiid) async {
     final form = FormData(
       {
@@ -34,6 +37,7 @@ class TransaksiProvider extends GetConnect {
     return post(dUrl + 'ubahStatusDompetMasuk.php', form);
   }
 
+  ///fungsi yang digunakan untuk mendapatkan [Status] data yang ada pada tabel transaksi_status
   Future<Status?> getAllStatus() async {
     final respone = await get(dUrl + "getStatTransaksi.php");
 
@@ -46,6 +50,9 @@ class TransaksiProvider extends GetConnect {
     return status;
   }
 
+  /// fungsi yang digunakan untuk melakukan request menambahkan data transaksi
+  /// parameter yang dibutukan yaitu
+  /// [deskripsi][nilai][tanggal][statusId][dompetId][KategoriId][transaksiId]
   Future<Response> addTransaksi(
     String deskripsi,
     String nilai,
@@ -70,6 +77,9 @@ class TransaksiProvider extends GetConnect {
     return post(dUrl + 'transaksi.php', form);
   }
 
+  /// fungsi yang digunakan untuk melakukan request mengedit data transaksi
+  /// parameter yang dibutukan yaitu
+  /// [id][deskripsi][nilai][statusId][dompetId][KategoriId]
   Future<Response> editTransaksi(
     String id,
     String deskripsi,

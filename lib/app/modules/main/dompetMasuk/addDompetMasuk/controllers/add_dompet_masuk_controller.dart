@@ -18,12 +18,18 @@ class AddDompetMasukController extends GetxController {
   late TextEditingController nilaiC;
   late TextEditingController deskripsiC;
   late TextEditingController dateC;
+
   var dateSlug =
       "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}"
           .obs;
 
+  /// Variabel untuk menampung list [status] yang aktif
   RxList<dStatus.Datum> status = List<dStatus.Datum>.empty().obs;
+
+  /// Variabel untuk menampung list [dompet] yang aktif
   RxList<dDompet.Datum> dompet = List<dDompet.Datum>.empty().obs;
+
+  /// Variabel untuk menampung list [kategori] yang aktif
   RxList<dKategori.Datum> kategori = List<dKategori.Datum>.empty().obs;
 
   var dropStatus = ''.obs;
@@ -31,6 +37,7 @@ class AddDompetMasukController extends GetxController {
   var dropKategori = ''.obs;
   // final items = ['Aktif', 'Tidak Aktif'];
 
+  ///fungsi yang digunakan untuk memanggil transaksiprovider [addTransaksi]
   Future<void> addTransaksi(String deskripsi, String nilai, String tanggal,
       String statusId, String dompetId, String kategoriId) async {
     if (nilai != '' ||
@@ -94,6 +101,7 @@ class AddDompetMasukController extends GetxController {
     }
   }
 
+  ///fungsi yang digunakan untuk mendapatkan list `status` aktif
   Future<RxList<dStatus.Datum>> getDataStatus() async {
     var response = await TransaksiProvider().getAllStatus();
     if (response!.data != null) {
@@ -108,6 +116,7 @@ class AddDompetMasukController extends GetxController {
     return status;
   }
 
+  ///fungsi yang digunakan untuk mendapatkan list `dompet` aktif
   Future<RxList<dDompet.Datum>> getDataDompet() async {
     var response = await DompetsController().getAllDompet();
     if (response!.data != null) {
@@ -122,6 +131,7 @@ class AddDompetMasukController extends GetxController {
     return dompet;
   }
 
+  ///fungsi yang digunakan untuk mendapatkan list `kategori` aktif
   Future<RxList<dKategori.Datum>> getDataKategori() async {
     var response = await KategoriProvider().getAllKategori();
     if (response!.data != null) {
