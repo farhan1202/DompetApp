@@ -69,4 +69,26 @@ class TransaksiProvider extends GetConnect {
 
     return post(dUrl + 'transaksi.php', form);
   }
+
+  Future<Response> editTransaksi(
+    String id,
+    String deskripsi,
+    String nilai,
+    String statusId,
+    String dompetId,
+    String kategoriId,
+  ) {
+    final form = FormData(
+      {
+        'id': id,
+        'deskripsi': deskripsi,
+        'nilai': nilai,
+        'status_id': statusId,
+        'dompet_id': dompetId,
+        'kategori_id': kategoriId,
+      },
+    );
+
+    return post(dUrl + 'editTransaksi.php', form);
+  }
 }

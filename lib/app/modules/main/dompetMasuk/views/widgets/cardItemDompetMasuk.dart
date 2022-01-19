@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mobile_pocket_app/app/data/models/allTransaksi.dart';
 import 'package:mobile_pocket_app/app/data/utils/constanta.dart';
 import 'package:mobile_pocket_app/app/modules/main/dompetMasuk/controllers/dompet_masuk_controller.dart';
+import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
 class CardItemDompetMasuk extends GetView<DompetMasukController> {
   const CardItemDompetMasuk({
@@ -122,10 +123,10 @@ class SubMenuDialog extends GetView<DompetMasukController> {
             icon: Icons.edit,
             title: "Edit",
             onTap: () {
-              // Get.toNamed(
-              //   Routes.EDIT_DOMPET,
-              //   arguments: data[i],
-              // );
+              Get.toNamed(
+                Routes.EDIT_DOMPET_MASUK,
+                arguments: data[i],
+              );
             },
           ),
           Divider(),
