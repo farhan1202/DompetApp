@@ -49,7 +49,7 @@ class InputStatus extends GetView<AddKategoriController> {
                 var data = controller.getDataStatus();
                 return data;
               },
-              hint: "Status",
+              hint: controller.dropStatus.value,
               itemAsString: (item) => "${item!.nama}",
               onChanged: (value) {
                 controller.dropStatus.value = value!.nama.toString();

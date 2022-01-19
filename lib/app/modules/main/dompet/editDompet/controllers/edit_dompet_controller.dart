@@ -25,7 +25,7 @@ class EditDompetController extends GetxController {
   /// fungsi yang digunakan untuk memanggil provider [editDompet]
   Future<void> editDompet(
       String name, String referensi, String deskripsi, String status) async {
-    if (name != '' || referensi != '' || deskripsi != '') {
+    if (name.length >= 5 && deskripsi.length <= 100) {
       String stat = '';
       if (status == 'Aktif') {
         stat = "1";
@@ -68,7 +68,7 @@ class EditDompetController extends GetxController {
         print(e.toString());
       }
     } else {
-      Get.snackbar("Perhatian", "Harap Isi Semua Data");
+      Get.snackbar("Perhatian", "Nama minimal 5 huruf");
     }
   }
 

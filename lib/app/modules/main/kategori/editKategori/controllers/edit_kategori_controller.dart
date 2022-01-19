@@ -23,7 +23,7 @@ class EditKategoriController extends GetxController {
   /// fungsi yang digunakan untuk memanggil provider [editKategori]
   Future<void> editKategori(
       String name, String deskripsi, String status) async {
-    if (name != '' || deskripsi != '') {
+    if (name.length >= 5 && deskripsi.length <= 100) {
       String stat = '';
       if (status == 'Aktif') {
         stat = "1";
@@ -65,7 +65,7 @@ class EditKategoriController extends GetxController {
         print(e.toString());
       }
     } else {
-      Get.snackbar("Perhatian", "Harap Isi Semua Data");
+      Get.snackbar("Perhatian", "Nama minimal 5 huruf");
     }
   }
 

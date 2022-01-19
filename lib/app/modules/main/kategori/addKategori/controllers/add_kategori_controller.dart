@@ -17,7 +17,7 @@ class AddKategoriController extends GetxController {
 
   /// fungsi yang digunakan untuk memanggil provider [addKategori]
   Future<void> addKategori(String name, String deskripsi, String status) async {
-    if (name != '' || deskripsi != '') {
+    if (name.length >= 5 && deskripsi.length <= 100) {
       String stat = '';
       if (status == 'Aktif') {
         stat = "1";
@@ -51,7 +51,7 @@ class AddKategoriController extends GetxController {
         print(e.toString());
       }
     } else {
-      Get.snackbar("Perhatian", "Harap Isi Semua Data");
+      Get.snackbar("Perhatian", "Nama Minimal 5 huruf");
     }
   }
 
@@ -72,6 +72,7 @@ class AddKategoriController extends GetxController {
   @override
   void onInit() {
     // TODO: implement onInit
+    dropStatus.value = "Aktif";
     nameC = TextEditingController();
     deskripsiC = TextEditingController();
     super.onInit();

@@ -110,7 +110,7 @@ class AddDompetKeluarController extends GetxController {
     if (response!.data != null) {
       dompet.clear();
       response.data!.forEach((element) {
-        dompet.add(element);
+        if (element.statusId.toString() == "1") dompet.add(element);
       });
 
       dompet.refresh();
@@ -124,7 +124,7 @@ class AddDompetKeluarController extends GetxController {
     if (response!.data != null) {
       kategori.clear();
       response.data!.forEach((element) {
-        kategori.add(element);
+        if (element.statusId.toString() == "1") kategori.add(element);
       });
 
       kategori.refresh();

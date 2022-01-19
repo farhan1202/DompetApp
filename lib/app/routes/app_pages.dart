@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
 
-import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
 import '../modules/main/dompet/addDompet/bindings/add_dompet_binding.dart';
 import '../modules/main/dompet/addDompet/views/add_dompet_view.dart';
 import '../modules/main/dompet/bindings/dompet_binding.dart';
@@ -41,11 +39,6 @@ class AppPages {
   static const INITIAL = Routes.DOMPET;
 
   static final routes = [
-    GetPage(
-      name: _Paths.HOME,
-      page: () => HomeView(),
-      binding: HomeBinding(),
-    ),
     GetPage(
       name: _Paths.MAIN,
       page: () => MainView(),
