@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_pocket_app/app/data/models/allTransaksi.dart';
 import 'package:mobile_pocket_app/app/data/utils/constanta.dart';
-import 'package:mobile_pocket_app/app/modules/main/dompetMasuk/controllers/dompet_masuk_controller.dart';
+import 'package:mobile_pocket_app/app/modules/main/dompetKeluar/controllers/dompet_keluar_controller.dart';
 import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
-class CardItemDompetMasuk extends GetView<DompetMasukController> {
-  const CardItemDompetMasuk({
+class CardItemDompetKeluar extends GetView<DompetKeluarController> {
+  const CardItemDompetKeluar({
     Key? key,
     required this.i,
     required this.height,
@@ -66,7 +66,7 @@ class CardItemDompetMasuk extends GetView<DompetMasukController> {
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(15)),
-                  color: Colors.green),
+                  color: Colors.red),
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
@@ -93,7 +93,7 @@ class CardItemDompetMasuk extends GetView<DompetMasukController> {
   }
 }
 
-class SubMenuDialog extends GetView<DompetMasukController> {
+class SubMenuDialog extends GetView<DompetKeluarController> {
   const SubMenuDialog({
     Key? key,
     required this.height,
@@ -124,7 +124,7 @@ class SubMenuDialog extends GetView<DompetMasukController> {
             title: "Edit",
             onTap: () {
               Get.toNamed(
-                Routes.EDIT_DOMPET_MASUK,
+                Routes.EDIT_DOMPET_KELUAR,
                 arguments: data[i],
               );
             },

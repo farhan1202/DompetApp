@@ -21,7 +21,7 @@ class DompetMasukView extends GetView<DompetMasukController> {
     return Scaffold(
       drawer: NavBarDrawer(),
       appBar: AppBar(
-        title: Text('Dempet Masuk'),
+        title: Text('Dompet Masuk'),
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(

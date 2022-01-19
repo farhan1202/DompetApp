@@ -36,8 +36,9 @@ class CardItemDompet extends GetView<DompetController> {
       child: Row(
         children: [
           CircleAvatar(
-            backgroundColor: kPrimaryColor,
-            radius: 40,
+            backgroundColor:
+                data[i].statusId == "1" ? Colors.green : Colors.red,
+            radius: 35,
           ),
           SizedBox(
             width: 20,
@@ -126,7 +127,7 @@ class SubMenuDialog extends GetView<DompetController> {
           ),
           Divider(),
           SubMenu(
-            icon: Icons.close,
+            icon: data[i].statusId == "1" ? Icons.close : Icons.check,
             title: data[i].statusId == "1" ? "Tidak Aktif" : "Aktif",
             onTap: () {
               controller.editStatDompet(

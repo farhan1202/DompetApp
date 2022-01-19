@@ -56,7 +56,13 @@ class NavBarDrawer extends StatelessWidget {
                       Get.toNamed(Routes.DOMPET_MASUK);
                     },
                   ),
-                  buildMenuItem(icon: Icons.outbond, title: "Dompet Keluar"),
+                  buildMenuItem(
+                    icon: Icons.outbond,
+                    title: "Dompet Keluar",
+                    onClicked: () {
+                      Get.toNamed(Routes.DOMPET_KELUAR);
+                    },
+                  ),
                   Divider(color: Colors.white70),
                   const Text(
                     "Laporan",
