@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_pocket_app/app/data/models/allDompet.dart';
+import 'package:mobile_pocket_app/app/data/models/Status.dart' as dataStat;
 import 'package:mobile_pocket_app/app/data/providers/dompetProvider.dart';
 import 'package:mobile_pocket_app/app/modules/main/dompet/controllers/dompet_controller.dart';
 import 'package:mobile_pocket_app/app/routes/app_pages.dart';
@@ -13,8 +14,10 @@ class EditDompetController extends GetxController {
   late TextEditingController referensiC;
   late TextEditingController deskripsiC;
 
-  var dropStatus = 'Aktif'.obs;
-  final items = ['Aktif', 'Tidak Aktif'];
+  var dropStatus = ''.obs;
+  // final items = ['Aktif', 'Tidak Aktif'];
+
+  RxList<dataStat.Datum> status = List<dataStat.Datum>.empty().obs;
 
   /// variabel yang digunakan untuk menampung data dari halaman sebelumnya
   Datum data = Get.arguments;
@@ -23,10 +26,10 @@ class EditDompetController extends GetxController {
   Future<void> editDompet(
       String name, String referensi, String deskripsi, String status) async {
     if (name != '' || referensi != '' || deskripsi != '') {
-      String stat;
+      String stat = '';
       if (status == 'Aktif') {
         stat = "1";
-      } else {
+      } else if (status == 'Tidak Aktif') {
         stat = "2";
       }
 
@@ -67,6 +70,20 @@ class EditDompetController extends GetxController {
     } else {
       Get.snackbar("Perhatian", "Harap Isi Semua Data");
     }
+  }
+
+  Future<RxList<dataStat.Datum>> getDataStatus() async {
+    var response = await DompetsController().getAllStatus();
+    if (response!.data != null) {
+      status.clear();
+      response.data!.forEach((element) {
+        status.add(element);
+      });
+
+      status.refresh();
+    }
+
+    return status;
   }
 
   @override

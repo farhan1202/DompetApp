@@ -54,7 +54,7 @@ class CustomeButton extends GetView<EditDompetController> {
           controller.nameC.text,
           controller.referensiC.text,
           controller.deskripsiC.text,
-          controller.dropStatus.toString(),
+          controller.dropStatus.value,
         );
       },
       child: Container(

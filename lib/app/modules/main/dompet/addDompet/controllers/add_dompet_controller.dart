@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:mobile_pocket_app/app/data/models/Status.dart';
 import 'package:mobile_pocket_app/app/data/providers/dompetProvider.dart';
+import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
 class AddDompetController extends GetxController {
   //TODO: Implement AddDompetController
@@ -10,17 +12,19 @@ class AddDompetController extends GetxController {
   late TextEditingController referensiC;
   late TextEditingController deskripsiC;
 
-  var dropStatus = 'Aktif'.obs;
+  RxList<Datum> status = List<Datum>.empty().obs;
+
+  var dropStatus = ''.obs;
   final items = ['Aktif', 'Tidak Aktif'];
 
   /// fungsi yang digunakan untuk memanggil provider [addDompet]
   Future<void> addDompet(
       String name, String referensi, String deskripsi, String status) async {
-    if (name != '' || referensi != '' || deskripsi != '') {
-      String stat;
+    if (name != '' || referensi != '' || deskripsi != '' || status != '') {
+      String stat = '';
       if (status == 'Aktif') {
         stat = "1";
-      } else {
+      } else if (status == 'Tidak Aktif') {
         stat = "2";
       }
       try {
@@ -34,8 +38,7 @@ class AddDompetController extends GetxController {
               middleText: data['message'],
               textConfirm: "OK",
               onConfirm: () {
-                Get.back();
-                Get.back();
+                Get.offNamed(Routes.DOMPET);
               },
             );
           } else {
@@ -55,6 +58,20 @@ class AddDompetController extends GetxController {
     } else {
       Get.snackbar("Perhatian", "Harap Isi Semua Data");
     }
+  }
+
+  Future<RxList<Datum>> getDataStatus() async {
+    var response = await DompetsController().getAllStatus();
+    if (response!.data != null) {
+      status.clear();
+      response.data!.forEach((element) {
+        status.add(element);
+      });
+
+      status.refresh();
+    }
+
+    return status;
   }
 
   @override
