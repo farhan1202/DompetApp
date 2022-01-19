@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mobile_pocket_app/app/data/models/Status.dart';
 import 'package:mobile_pocket_app/app/data/models/allTransaksi.dart';
 import 'package:mobile_pocket_app/app/data/utils/constanta.dart';
 
@@ -31,5 +32,17 @@ class TransaksiProvider extends GetConnect {
     );
 
     return post(dUrl + 'ubahStatusDompetMasuk.php', form);
+  }
+
+  Future<Status?> getAllStatus() async {
+    final respone = await get(dUrl + "getStatTransaksi.php");
+
+    Status status;
+    status = Status.fromJson(respone.body);
+    if (status.data == null) {
+      return null;
+    }
+
+    return status;
   }
 }

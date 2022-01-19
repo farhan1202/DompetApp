@@ -15,7 +15,7 @@ class AddDompetController extends GetxController {
   RxList<Datum> status = List<Datum>.empty().obs;
 
   var dropStatus = ''.obs;
-  final items = ['Aktif', 'Tidak Aktif'];
+  // final items = ['Aktif', 'Tidak Aktif'];
 
   /// fungsi yang digunakan untuk memanggil provider [addDompet]
   Future<void> addDompet(
