@@ -10,6 +10,12 @@ import '../modules/main/dompet/detailDompet/views/detail_dompet_view.dart';
 import '../modules/main/dompet/editDompet/bindings/edit_dompet_binding.dart';
 import '../modules/main/dompet/editDompet/views/edit_dompet_view.dart';
 import '../modules/main/dompet/views/dompet_view.dart';
+import '../modules/main/dompetKeluar/addDompetKeluar/bindings/add_dompet_keluar_binding.dart';
+import '../modules/main/dompetKeluar/addDompetKeluar/views/add_dompet_keluar_view.dart';
+import '../modules/main/dompetKeluar/bindings/dompet_keluar_binding.dart';
+import '../modules/main/dompetKeluar/editDompetKeluar/bindings/edit_dompet_keluar_binding.dart';
+import '../modules/main/dompetKeluar/editDompetKeluar/views/edit_dompet_keluar_view.dart';
+import '../modules/main/dompetKeluar/views/dompet_keluar_view.dart';
 import '../modules/main/dompetMasuk/addDompetMasuk/bindings/add_dompet_masuk_binding.dart';
 import '../modules/main/dompetMasuk/addDompetMasuk/views/add_dompet_masuk_view.dart';
 import '../modules/main/dompetMasuk/bindings/dompet_masuk_binding.dart';
@@ -103,6 +109,23 @@ class AppPages {
           name: _Paths.EDIT_DOMPET_MASUK,
           page: () => EditDompetMasukView(),
           binding: EditDompetMasukBinding(),
+        ),
+      ],
+    ),
+    GetPage(
+      name: _Paths.DOMPET_KELUAR,
+      page: () => DompetKeluarView(),
+      binding: DompetKeluarBinding(),
+      children: [
+        GetPage(
+          name: _Paths.EDIT_DOMPET_KELUAR,
+          page: () => EditDompetKeluarView(),
+          binding: EditDompetKeluarBinding(),
+        ),
+        GetPage(
+          name: _Paths.ADD_DOMPET_KELUAR,
+          page: () => AddDompetKeluarView(),
+          binding: AddDompetKeluarBinding(),
         ),
       ],
     ),

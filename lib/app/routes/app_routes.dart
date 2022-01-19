@@ -17,6 +17,11 @@ abstract class Routes {
   static const ADD_DOMPET_MASUK = _Paths.DOMPET_MASUK + _Paths.ADD_DOMPET_MASUK;
   static const EDIT_DOMPET_MASUK =
       _Paths.DOMPET_MASUK + _Paths.EDIT_DOMPET_MASUK;
+  static const DOMPET_KELUAR = _Paths.MAIN + _Paths.DOMPET_KELUAR;
+  static const EDIT_DOMPET_KELUAR =
+      _Paths.DOMPET_KELUAR + _Paths.EDIT_DOMPET_KELUAR;
+  static const ADD_DOMPET_KELUAR =
+      _Paths.DOMPET_KELUAR + _Paths.ADD_DOMPET_KELUAR;
 }
 
 abstract class _Paths {
@@ -34,4 +39,7 @@ abstract class _Paths {
   static const DOMPET_MASUK = '/dompet-masuk';
   static const ADD_DOMPET_MASUK = '/add-dompet-masuk';
   static const EDIT_DOMPET_MASUK = '/edit-dompet-masuk';
+  static const DOMPET_KELUAR = '/dompet-keluar';
+  static const EDIT_DOMPET_KELUAR = '/edit-dompet-keluar';
+  static const ADD_DOMPET_KELUAR = '/add-dompet-keluar';
 }
