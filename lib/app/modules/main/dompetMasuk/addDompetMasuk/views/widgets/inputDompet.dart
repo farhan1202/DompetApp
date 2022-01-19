@@ -52,7 +52,7 @@ class InputDompet extends GetView<AddDompetMasukController> {
               hint: "Dompet",
               itemAsString: (item) => "${item!.nama}",
               onChanged: (value) {
-                controller.dropStatus.value = value!.id.toString();
+                controller.dropDompet.value = value!.id.toString();
               },
               dropdownSearchDecoration:
                   InputDecoration(border: InputBorder.none),

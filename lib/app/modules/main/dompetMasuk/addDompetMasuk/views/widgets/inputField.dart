@@ -41,6 +41,7 @@ class inputField extends StatelessWidget {
               ],
             ),
             child: TextField(
+              onChanged: (value) => print(value),
               keyboardType: tipe,
               controller: controllerC,
               textInputAction: action,

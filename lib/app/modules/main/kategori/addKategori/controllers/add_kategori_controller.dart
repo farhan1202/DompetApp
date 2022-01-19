@@ -33,7 +33,7 @@ class AddKategoriController extends GetxController {
               middleText: data['message'],
               textConfirm: "OK",
               onConfirm: () {
-                Get.offNamed(Routes.KATEGORI);
+                Get.offAllNamed(Routes.KATEGORI);
               },
             );
           } else {

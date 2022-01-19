@@ -52,7 +52,7 @@ class InputKategori extends GetView<AddDompetMasukController> {
               hint: "Kategori",
               itemAsString: (item) => "${item!.nama}",
               onChanged: (value) {
-                controller.dropStatus.value = value!.id.toString();
+                controller.dropKategori.value = value!.id.toString();
               },
               dropdownSearchDecoration:
                   InputDecoration(border: InputBorder.none),

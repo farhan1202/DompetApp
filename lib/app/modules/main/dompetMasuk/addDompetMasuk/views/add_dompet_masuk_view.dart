@@ -4,36 +4,40 @@ import 'package:get/get.dart';
 import 'package:mobile_pocket_app/app/data/utils/constanta.dart';
 
 import '../controllers/add_dompet_masuk_controller.dart';
+import 'widgets/inputDate.dart';
 import 'widgets/inputDompet.dart';
 import 'widgets/inputField.dart';
 import 'widgets/inputKategori.dart';
 import 'widgets/inputStatus.dart';
 
 class AddDompetMasukView extends GetView<AddDompetMasukController> {
+  AddDompetMasukView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Dompet Masuk'),
+        title: const Text('Add Dompet Masuk'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
             children: [
+              InputDate(),
               inputField(
                 title: "Deskripsi",
                 controllerC: controller.deskripsiC,
               ),
-              InputKategori(),
-              InputDompet(),
+              const InputKategori(),
+              const InputDompet(),
               inputField(
                 title: "Nilai",
                 controllerC: controller.nilaiC,
                 tipe: TextInputType.number,
               ),
-              InputStatus(),
-              CustomeButton()
+              const InputStatus(),
+              const CustomeButton()
             ],
           ),
         ),
@@ -50,7 +54,16 @@ class CustomeButton extends GetView<AddDompetMasukController> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        controller.addTransaksi(
+          controller.deskripsiC.text,
+          (controller.nilaiC.text.isEmpty) ? "0" : controller.nilaiC.text,
+          controller.dateSlug.value,
+          controller.dropStatus.value,
+          controller.dropDompet.value,
+          controller.dropKategori.value,
+        );
+      },
       child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -66,7 +79,7 @@ class CustomeButton extends GetView<AddDompetMasukController> {
               ),
             ],
           ),
-          child: Center(
+          child: const Center(
             child: Text(
               "Add Dompet Masuk",
               style: TextStyle(

@@ -20,6 +20,7 @@ class DompetsController extends GetConnect {
   }
 
   /// Fungsi yang digunakan untuk menambahkan data dompet
+  ///
   /// request berupa [nama][referensi][deskripsi][status_id]
   Future<Response> addDompet(
       String nama, String referensi, String deskripsi, String status_id) {

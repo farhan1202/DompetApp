@@ -8,6 +8,7 @@ import 'package:mobile_pocket_app/app/data/models/allTransaksi.dart';
 import 'package:mobile_pocket_app/app/data/providers/dompetProvider.dart';
 import 'package:mobile_pocket_app/app/data/providers/kategoriProvider.dart';
 import 'package:mobile_pocket_app/app/data/providers/transaksiProvider.dart';
+import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
 class AddDompetMasukController extends GetxController {
   //TODO: Implement AddDompetMasukController
@@ -16,6 +17,10 @@ class AddDompetMasukController extends GetxController {
 
   late TextEditingController nilaiC;
   late TextEditingController deskripsiC;
+  late TextEditingController dateC;
+  var dateSlug =
+      "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}"
+          .obs;
 
   RxList<dStatus.Datum> status = List<dStatus.Datum>.empty().obs;
   RxList<dDompet.Datum> dompet = List<dDompet.Datum>.empty().obs;
@@ -26,7 +31,65 @@ class AddDompetMasukController extends GetxController {
   var dropKategori = ''.obs;
   // final items = ['Aktif', 'Tidak Aktif'];
 
-  /// fungsi yang digunakan untuk memanggil provider [addDompet]
+  Future<void> addTransaksi(String deskripsi, String nilai, String tanggal,
+      String statusId, String dompetId, String kategoriId) async {
+    if (deskripsi != '' ||
+        nilai != '' ||
+        tanggal != '' ||
+        statusId != '' ||
+        dompetId != '' ||
+        kategoriId != '') {
+      if (int.parse(nilai) >= 0) {
+        String stat = '';
+        if (statusId == 'Aktif') {
+          stat = "1";
+        } else if (statusId == 'Tidak Aktif') {
+          stat = "2";
+        }
+
+        try {
+          TransaksiProvider()
+              .addTransaksi(
+            deskripsi,
+            nilai,
+            dateSlug.value,
+            stat,
+            dompetId,
+            kategoriId,
+            "1",
+          )
+              .then((value) {
+            var data = value.body;
+            if (data['status'] == "200") {
+              Get.defaultDialog(
+                title: "Sukses",
+                middleText: data['message'],
+                textConfirm: "OK",
+                onConfirm: () {
+                  Get.offAllNamed(Routes.DOMPET_MASUK);
+                },
+              );
+            } else {
+              Get.defaultDialog(
+                title: "Faileds",
+                middleText: data['message'],
+                textConfirm: "OK",
+                onConfirm: () {
+                  Get.back();
+                },
+              );
+            }
+          });
+        } catch (e) {
+          print(e.toString());
+        }
+      } else {
+        Get.snackbar("Perhatian", "nilai tidak boleh minus");
+      }
+    } else {
+      Get.snackbar("Perhatian", "Harap Isi Semua Data");
+    }
+  }
 
   Future<RxList<dStatus.Datum>> getDataStatus() async {
     var response = await TransaksiProvider().getAllStatus();
@@ -75,6 +138,7 @@ class AddDompetMasukController extends GetxController {
     // TODO: implement onInit
     nilaiC = TextEditingController();
     deskripsiC = TextEditingController();
+    dateC = TextEditingController();
     super.onInit();
   }
 
@@ -82,6 +146,7 @@ class AddDompetMasukController extends GetxController {
   void onClose() {
     nilaiC.dispose();
     deskripsiC.dispose();
+    dateC.dispose();
     // TODO: implement onClose
     super.onClose();
   }

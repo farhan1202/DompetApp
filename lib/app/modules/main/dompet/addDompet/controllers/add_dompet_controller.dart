@@ -38,7 +38,7 @@ class AddDompetController extends GetxController {
               middleText: data['message'],
               textConfirm: "OK",
               onConfirm: () {
-                Get.offNamed(Routes.DOMPET);
+                Get.offAllNamed(Routes.DOMPET);
               },
             );
           } else {
