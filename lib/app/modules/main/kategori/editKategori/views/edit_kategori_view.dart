@@ -49,7 +49,7 @@ class CustomeButton extends GetView<EditKategoriController> {
         controller.editKategori(
           controller.nameC.text,
           controller.deskripsiC.text,
-          controller.dropStatus.toString(),
+          controller.dropStatus.value,
         );
       },
       child: Container(

@@ -47,7 +47,7 @@ class CustomeButton extends GetView<AddKategoriController> {
         controller.addKategori(
           controller.nameC.text,
           controller.deskripsiC.text,
-          controller.dropStatus.toString(),
+          controller.dropStatus.value,
         );
       },
       child: Container(

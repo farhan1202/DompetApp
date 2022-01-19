@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mobile_pocket_app/app/data/models/Status.dart';
 import 'package:mobile_pocket_app/app/data/models/allKategori.dart';
 import 'package:mobile_pocket_app/app/data/utils/constanta.dart';
 
@@ -60,5 +61,17 @@ class KategoriProvider extends GetConnect {
     );
 
     return post(dUrl + 'editKategori.php', form);
+  }
+
+  Future<Status?> getAllStatus() async {
+    final respone = await get(dUrl + "getStatDompet.php");
+
+    Status status;
+    status = Status.fromJson(respone.body);
+    if (status.data == null) {
+      return null;
+    }
+
+    return status;
   }
 }

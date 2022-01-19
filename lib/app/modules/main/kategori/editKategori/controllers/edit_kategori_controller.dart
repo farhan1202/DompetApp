@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_pocket_app/app/data/models/allKategori.dart';
+import 'package:mobile_pocket_app/app/data/models/Status.dart' as dataStat;
 import 'package:mobile_pocket_app/app/data/providers/kategoriProvider.dart';
 import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
@@ -11,8 +12,10 @@ class EditKategoriController extends GetxController {
   late TextEditingController nameC;
   late TextEditingController deskripsiC;
 
-  var dropStatus = 'Aktif'.obs;
-  final items = ['Aktif', 'Tidak Aktif'];
+  RxList<dataStat.Datum> status = List<dataStat.Datum>.empty().obs;
+
+  var dropStatus = ''.obs;
+  // final items = ['Aktif', 'Tidak Aktif'];
 
   /// variabel yang digunakan untuk menampung data dari halaman sebelumnya
   Datum data = Get.arguments;
@@ -21,10 +24,10 @@ class EditKategoriController extends GetxController {
   Future<void> editKategori(
       String name, String deskripsi, String status) async {
     if (name != '' || deskripsi != '') {
-      String stat;
+      String stat = '';
       if (status == 'Aktif') {
         stat = "1";
-      } else {
+      } else if (status == 'Tidak Aktif') {
         stat = "2";
       }
 
@@ -64,6 +67,20 @@ class EditKategoriController extends GetxController {
     } else {
       Get.snackbar("Perhatian", "Harap Isi Semua Data");
     }
+  }
+
+  Future<RxList<dataStat.Datum>> getDataStatus() async {
+    var response = await KategoriProvider().getAllStatus();
+    if (response!.data != null) {
+      status.clear();
+      response.data!.forEach((element) {
+        status.add(element);
+      });
+
+      status.refresh();
+    }
+
+    return status;
   }
 
   @override

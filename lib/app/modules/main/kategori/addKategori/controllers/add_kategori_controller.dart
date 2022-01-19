@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile_pocket_app/app/data/models/Status.dart';
 import 'package:mobile_pocket_app/app/data/providers/kategoriProvider.dart';
+import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
 class AddKategoriController extends GetxController {
   //TODO: Implement AddKategoriController
@@ -9,16 +11,17 @@ class AddKategoriController extends GetxController {
   late TextEditingController nameC;
   late TextEditingController deskripsiC;
 
-  var dropStatus = 'Aktif'.obs;
-  final items = ['Aktif', 'Tidak Aktif'];
+  RxList<Datum> status = List<Datum>.empty().obs;
+  var dropStatus = ''.obs;
+  // final items = ['Aktif', 'Tidak Aktif'];
 
   /// fungsi yang digunakan untuk memanggil provider [addKategori]
   Future<void> addKategori(String name, String deskripsi, String status) async {
     if (name != '' || deskripsi != '') {
-      String stat;
+      String stat = '';
       if (status == 'Aktif') {
         stat = "1";
-      } else {
+      } else if (status == "Tidak Aktif") {
         stat = "2";
       }
       try {
@@ -30,8 +33,7 @@ class AddKategoriController extends GetxController {
               middleText: data['message'],
               textConfirm: "OK",
               onConfirm: () {
-                Get.back();
-                Get.back();
+                Get.offNamed(Routes.KATEGORI);
               },
             );
           } else {
@@ -51,6 +53,20 @@ class AddKategoriController extends GetxController {
     } else {
       Get.snackbar("Perhatian", "Harap Isi Semua Data");
     }
+  }
+
+  Future<RxList<Datum>> getDataStatus() async {
+    var response = await KategoriProvider().getAllStatus();
+    if (response!.data != null) {
+      status.clear();
+      response.data!.forEach((element) {
+        status.add(element);
+      });
+
+      status.refresh();
+    }
+
+    return status;
   }
 
   @override
