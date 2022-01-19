@@ -38,7 +38,7 @@ class KategoriController extends GetxController {
         kategoriNAktif.refresh();
       }
     } catch (e) {
-      Get.snackbar("Error", e.toString());
+      // Get.snackbar("Error", e.toString());
     }
   }
 

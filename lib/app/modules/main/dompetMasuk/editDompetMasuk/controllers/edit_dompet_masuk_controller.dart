@@ -34,56 +34,56 @@ class EditDompetMasukController extends GetxController {
 
   Future<void> editDompetMasuk(String deskripsi, String nilai, String statusId,
       String dompetId, String kategoriId) async {
-    if (deskripsi != '' ||
-        nilai != '' ||
-        statusId != '' ||
-        dompetId != '' ||
-        kategoriId != '') {
-      if (int.parse(nilai) >= 0) {
-        String stat = '';
-        if (statusId == 'Aktif') {
-          stat = "1";
-        } else if (statusId == 'Tidak Aktif') {
-          stat = "2";
-        }
+    if (nilai != '' || statusId != '' || dompetId != '' || kategoriId != '') {
+      if (deskripsi.length <= 100) {
+        if (int.parse(nilai) >= 0) {
+          String stat = '';
+          if (statusId == 'Aktif') {
+            stat = "1";
+          } else if (statusId == 'Tidak Aktif') {
+            stat = "2";
+          }
 
-        try {
-          TransaksiProvider()
-              .editTransaksi(
-            data.id.toString(),
-            deskripsi,
-            nilai,
-            stat,
-            dompetId,
-            kategoriId,
-          )
-              .then((value) {
-            var data = value.body;
-            if (data['status'] == "200") {
-              Get.defaultDialog(
-                title: "Sukses",
-                middleText: data['message'],
-                textConfirm: "OK",
-                onConfirm: () {
-                  Get.offAllNamed(Routes.DOMPET_MASUK);
-                },
-              );
-            } else {
-              Get.defaultDialog(
-                title: "Faileds",
-                middleText: data['message'],
-                textConfirm: "OK",
-                onConfirm: () {
-                  Get.back();
-                },
-              );
-            }
-          });
-        } catch (e) {
-          print(e.toString());
+          try {
+            TransaksiProvider()
+                .editTransaksi(
+              data.id.toString(),
+              deskripsi,
+              nilai,
+              stat,
+              dompetId,
+              kategoriId,
+            )
+                .then((value) {
+              var data = value.body;
+              if (data['status'] == "200") {
+                Get.defaultDialog(
+                  title: "Sukses",
+                  middleText: data['message'],
+                  textConfirm: "OK",
+                  onConfirm: () {
+                    Get.offAllNamed(Routes.DOMPET_MASUK);
+                  },
+                );
+              } else {
+                Get.defaultDialog(
+                  title: "Faileds",
+                  middleText: data['message'],
+                  textConfirm: "OK",
+                  onConfirm: () {
+                    Get.back();
+                  },
+                );
+              }
+            });
+          } catch (e) {
+            print(e.toString());
+          }
+        } else {
+          Get.snackbar("Perhatian", "nilai tidak boleh minus");
         }
       } else {
-        Get.snackbar("Perhatian", "nilai tidak boleh minus");
+        Get.snackbar("Perhatian", "Deskripsi maksimal 100 kata");
       }
     } else {
       Get.snackbar("Perhatian", "Harap Isi Semua Data");

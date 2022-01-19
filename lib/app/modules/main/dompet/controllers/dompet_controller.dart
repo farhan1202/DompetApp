@@ -38,7 +38,7 @@ class DompetController extends GetxController {
         dompetNAktif.refresh();
       }
     } catch (e) {
-      Get.snackbar("Error", e.toString());
+      // Get.snackbar("Error", e.toString());
     }
   }
 

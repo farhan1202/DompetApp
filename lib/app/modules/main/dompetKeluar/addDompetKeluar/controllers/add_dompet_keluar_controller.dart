@@ -33,58 +33,61 @@ class AddDompetKeluarController extends GetxController {
 
   Future<void> addTransaksi(String deskripsi, String nilai, String tanggal,
       String statusId, String dompetId, String kategoriId) async {
-    if (deskripsi != '' ||
-        nilai != '' ||
+    if (nilai != '' ||
         tanggal != '' ||
         statusId != '' ||
         dompetId != '' ||
         kategoriId != '') {
-      if (int.parse(nilai) >= 0) {
-        String stat = '';
-        if (statusId == 'Aktif') {
-          stat = "1";
-        } else if (statusId == 'Tidak Aktif') {
-          stat = "2";
-        }
+      if (deskripsi.length <= 100) {
+        if (int.parse(nilai) >= 0) {
+          String stat = '';
+          if (statusId == 'Aktif') {
+            stat = "1";
+          } else if (statusId == 'Tidak Aktif') {
+            stat = "2";
+          }
 
-        try {
-          TransaksiProvider()
-              .addTransaksi(
-            deskripsi,
-            nilai,
-            dateSlug.value,
-            stat,
-            dompetId,
-            kategoriId,
-            "2",
-          )
-              .then((value) {
-            var data = value.body;
-            if (data['status'] == "200") {
-              Get.defaultDialog(
-                title: "Sukses",
-                middleText: data['message'],
-                textConfirm: "OK",
-                onConfirm: () {
-                  Get.offAllNamed(Routes.DOMPET_KELUAR);
-                },
-              );
-            } else {
-              Get.defaultDialog(
-                title: "Faileds",
-                middleText: data['message'],
-                textConfirm: "OK",
-                onConfirm: () {
-                  Get.back();
-                },
-              );
-            }
-          });
-        } catch (e) {
-          print(e.toString());
+          try {
+            TransaksiProvider()
+                .addTransaksi(
+              deskripsi,
+              nilai,
+              dateSlug.value,
+              stat,
+              dompetId,
+              kategoriId,
+              "2",
+            )
+                .then((value) {
+              var data = value.body;
+              if (data['status'] == "200") {
+                Get.defaultDialog(
+                  title: "Sukses",
+                  middleText: data['message'],
+                  textConfirm: "OK",
+                  onConfirm: () {
+                    Get.offAllNamed(Routes.DOMPET_KELUAR);
+                  },
+                );
+              } else {
+                Get.defaultDialog(
+                  title: "Faileds",
+                  middleText: data['message'],
+                  textConfirm: "OK",
+                  onConfirm: () {
+                    Get.back();
+                  },
+                );
+              }
+            });
+          } catch (e) {
+            print(e.toString());
+          }
+        } else {
+          Get.snackbar("Perhatian", "nilai tidak boleh minus");
         }
       } else {
-        Get.snackbar("Perhatian", "nilai tidak boleh minus");
+        Get.snackbar("Perhatian", "Deskripsi Maksimal 100 kata");
       }
     } else {
       Get.snackbar("Perhatian", "Harap Isi Semua Data");
@@ -136,6 +139,7 @@ class AddDompetKeluarController extends GetxController {
   @override
   void onInit() {
     // TODO: implement onInit
+    dropStatus.value = "Aktif";
     nilaiC = TextEditingController();
     deskripsiC = TextEditingController();
     dateC = TextEditingController();
