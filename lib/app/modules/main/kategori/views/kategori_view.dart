@@ -6,6 +6,7 @@ import 'package:mobile_pocket_app/app/data/utils/constanta.dart';
 import 'package:mobile_pocket_app/app/modules/main/kategori/views/widgets/cardItemKategori.dart';
 import 'package:mobile_pocket_app/app/modules/main/kategori/views/widgets/tabBarKategori.dart';
 import 'package:mobile_pocket_app/app/modules/utils/widgets/NavDrawerWid.dart';
+import 'package:mobile_pocket_app/app/modules/utils/widgets/SearchBar.dart';
 import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
 import '../controllers/kategori_controller.dart';
@@ -23,7 +24,7 @@ class KategoriView extends GetView<KategoriController> {
       drawer: NavBarDrawer(),
       appBar: AppBar(
         title: Text('Kategori'),
-        centerTitle: true,
+        actions: [SearchBar()],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

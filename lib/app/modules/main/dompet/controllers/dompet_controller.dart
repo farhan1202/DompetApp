@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:mobile_pocket_app/app/data/models/allDompet.dart';
 import 'package:mobile_pocket_app/app/data/providers/dompetProvider.dart';
@@ -7,6 +8,7 @@ import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
 class DompetController extends GetxController {
   //TODO: Implement DompetController
+
   /// variabel untuk menampung data [dompet]
   RxList<Datum> dompet = List<Datum>.empty().obs;
 

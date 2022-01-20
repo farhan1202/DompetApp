@@ -6,6 +6,7 @@ import 'package:mobile_pocket_app/app/data/utils/constanta.dart';
 import 'package:mobile_pocket_app/app/modules/main/dompetKeluar/views/widgets/cardItemDompetKeluar.dart';
 import 'package:mobile_pocket_app/app/modules/main/dompetKeluar/views/widgets/tabBarKeluar.dart';
 import 'package:mobile_pocket_app/app/modules/utils/widgets/NavDrawerWid.dart';
+import 'package:mobile_pocket_app/app/modules/utils/widgets/SearchBar.dart';
 import 'package:mobile_pocket_app/app/routes/app_pages.dart';
 
 import '../controllers/dompet_keluar_controller.dart';
@@ -22,7 +23,7 @@ class DompetKeluarView extends GetView<DompetKeluarController> {
       drawer: NavBarDrawer(),
       appBar: AppBar(
         title: Text('Dompet Keluar'),
-        centerTitle: true,
+        actions: [SearchBar()],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
